@@ -1,0 +1,12 @@
+{
+  "name": "biblioteca-geek",
+  "version": "1.0.0",
+  "description": "Aplicação web para biblioteca com AJAX, WebSocket e Bootstrap",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

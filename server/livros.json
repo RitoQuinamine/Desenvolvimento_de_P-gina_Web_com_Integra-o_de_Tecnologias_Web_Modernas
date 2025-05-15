@@ -1,0 +1,16 @@
+[
+  {
+    "titulo": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "quantidade": 1,
+    "descricao": "Um clássico sobre amizade e descoberta.",
+    "imagem": "/uploads/1747218693681.jpeg"
+  },
+  {
+    "titulo": "Batman: O Longo Dia das Bruxas",
+    "autor": "Jeph Loeb e Tim Sale",
+    "quantidade": 50,
+    "descricao": "Batman investiga os crimes de um serial killer que mata apenas durante um feriado de cada mês, enquanto tenta ajudar o Promotor Harvey Dent a deter uma guerra entre as duas maiores famílias mafiosas de Gotham, os Falcone e os Maroni.",
+    "imagem": "/uploads/1747253256599.webp"
+  }
+]

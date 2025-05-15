@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Geek</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="uploads/navbar.png" alt="Logo" width="40" height="40" class="me-2 rounded-circle">
+        <span class="fw-bold">Biblioteca Geek</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#perfilModal">Perfil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" id="adminLink" data-bs-toggle="modal" data-bs-target="#adminLoginModal">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero text-center text-white py-5">
+    <h1>Bem-vindo à Biblioteca Geek!</h1>
+    <p>Encontre seus livros favoritos e alugue agora!</p>
+  </div>
+
+  <!-- Busca (AJAX) -->
+  <div class="container mt-4" id="buscaSection">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3>Busca de Livros</h3>
+        <div class="input-group mb-3">
+          <input type="text" id="buscaInput" class="form-control" placeholder="Digite o título do livro...">
+          <button id="buscaBtn" class="btn btn-neon">Buscar</button>
+        </div>
+        <div id="resultados" class="bg-dark p-3 rounded shadow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Login do Admin -->
+  <div class="modal fade" id="adminLoginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Login do Administrador</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="adminLoginForm">
+            <div class="mb-3">
+              <label for="emailAdmin" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="emailAdmin" required>
+            </div>
+            <div class="mb-3">
+              <label for="senhaAdmin" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="senhaAdmin" required>
+            </div>
+            <button type="submit" class="btn btn-neon">Entrar</button>
+          </form>
+          <div id="erroLogin" class="alert alert-danger mt-3 d-none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Perfil do Usuário -->
+  <div class="modal fade" id="perfilModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title">Perfil do Usuário</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="perfilInfo" class="mt-3"></div>
+          <div id="perfilAcoes" class="mb-3">
+            <button id="loginBtn" class="btn btn-neon me-2">Login</button>
+            <button id="cadastrarBtn" class="btn btn-neon">Cadastrar</button>
+          </div>
+          <form id="perfilForm" class="d-none">
+            <div class="mb-3">
+              <label for="nome" class="form-label d-none">Nome</label>
+              <input type="text" class="form-control d-none" id="nome">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="senha" required>
+            </div>
+            <button type="submit" id="formSubmitBtn" class="btn btn-neon">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/busca.js"></script>
+  <script src="scripts/perfil.js"></script>
+  <script>
+    document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailAdmin').value;
+      const senha = document.getElementById('senhaAdmin').value;
+      const erroLogin = document.getElementById('erroLogin');
+
+      try {
+        const response = await fetch('/admins');
+        if (!response.ok) throw new Error('Erro ao carregar administradores');
+        const admins = await response.json();
+        const admin = admins.find(a => a.email === email && a.senha === senha);
+
+        if (admin) {
+          localStorage.setItem('adminLogado', JSON.stringify(admin));
+          window.location.href = 'admin.html';
+        } else {
+          erroLogin.classList.remove('d-none');
+          erroLogin.textContent = 'E-mail ou senha incorretos.';
+        }
+      } catch (error) {
+        erroLogin.classList.remove('d-none');
+        erroLogin.textContent = 'Erro ao fazer login. Tente novamente.';
+      }
+    });
+
+    if (localStorage.getItem('adminLogado')) {
+      const adminLink = document.getElementById('adminLink');
+      adminLink.textContent = 'Sair';
+      adminLink.removeAttribute('data-bs-toggle');
+      adminLink.removeAttribute('data-bs-target');
+      adminLink.addEventListener('click', () => {
+        localStorage.removeItem('adminLogado');
+        window.location.reload();
+      });
+    }
+
+    window.addEventListener('load', () => {
+      const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+      if (!usuarioLogado) {
+        const perfilModal = new bootstrap.Modal(document.getElementById('perfilModal'));
+        perfilModal.show();
+      }
+    });
+  </script>
+</body>
+</html>

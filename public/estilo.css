@@ -1,0 +1,39 @@
+body {
+  background-color: #1A2526;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.hero {
+  background: linear-gradient(135deg, #00ff22, #1100ff);
+  padding: 50px 0;
+}
+
+.btn-neon {
+  background: transparent;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+  background: #00ff00;
+  color: #1A2526;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.navbar-brand img {
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}

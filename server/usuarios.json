@@ -1,0 +1,12 @@
+[
+  {
+    "nome": "Teste",
+    "email": "teste@exemplo.com",
+    "senha": "123456",
+    "alugueis": [
+      "O Pequeno Príncipe",
+      "O Pequeno Príncipe"
+    ],
+    "dataCadastro": "2025-05-15"
+  }
+]
