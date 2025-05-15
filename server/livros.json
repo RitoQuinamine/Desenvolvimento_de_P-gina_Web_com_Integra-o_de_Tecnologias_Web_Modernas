@@ -12,5 +12,13 @@
     "quantidade": 50,
     "descricao": "Batman investiga os crimes de um serial killer que mata apenas durante um feriado de cada mês, enquanto tenta ajudar o Promotor Harvey Dent a deter uma guerra entre as duas maiores famílias mafiosas de Gotham, os Falcone e os Maroni.",
     "imagem": "/uploads/1747253256599.webp"
+  },
+  {
+    "titulo": "Game Of Thrones",
+    "autor": "George R. R. Martin",
+    "quantidade": 20,
+    "descricao": "A história se passa nos continentes fictícios de Westeros e Essos e acompanha várias famílias nobres que lutam pelo controle do Trono de Ferro do reino dos Sete Reinos. A trama é marcada por intrigas políticas, alianças traiçoeiras, batalhas épicas e elementos sobrenaturais, como dragões e seres míticos.",
+    "imagem": "/uploads/1747322602290.jpg",
+    "dataChegada": null
   }
 ]
