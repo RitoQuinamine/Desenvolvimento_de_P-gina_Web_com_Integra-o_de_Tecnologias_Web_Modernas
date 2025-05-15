@@ -6,7 +6,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const mensagemErro = document.getElementById('mensagemErro');
   console.log('Tentando login com:', { email, senha });
 
-  // Limpar mensagem anterior e exibir estado de carregamento
   mensagemErro.style.display = 'none';
   mensagemErro.textContent = '';
 

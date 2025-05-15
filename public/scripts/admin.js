@@ -38,7 +38,6 @@ async function salvarDados(endpoint, dados) {
   }
 }
 
-// Gerenciamento de Livros
 async function atualizarLivros() {
   const livros = await carregarDados('livros');
   const livrosTable = document.getElementById('livrosTable');
@@ -66,7 +65,7 @@ async function atualizarLivros() {
     </tr>
   `).join('');
 
-  // Aumentar quantidade
+ 
   document.querySelectorAll('.aumentarBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -85,7 +84,7 @@ async function atualizarLivros() {
     });
   });
 
-  // Reduzir quantidade
+
   document.querySelectorAll('.reduzirBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -106,7 +105,6 @@ async function atualizarLivros() {
     });
   });
 
-  // Disponibilizar
   document.querySelectorAll('.disponibilizarBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -123,7 +121,6 @@ async function atualizarLivros() {
     });
   });
 
-  // Indisponibilizar
   document.querySelectorAll('.indisponibilizarBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -139,7 +136,6 @@ async function atualizarLivros() {
     });
   });
 
-  // Salvar data de chegada
   document.querySelectorAll('.salvarDataBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -165,7 +161,7 @@ async function atualizarLivros() {
     });
   });
 
-  // Editar livro
+
   document.querySelectorAll('.editarLivroBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -211,7 +207,7 @@ async function atualizarLivros() {
     });
   });
 
-  // Deletar livro
+
   document.querySelectorAll('.deletarLivroBtn').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const index = e.target.getAttribute('data-index');
@@ -280,7 +276,6 @@ document.getElementById('livroForm').addEventListener('submit', async (e) => {
   }
 });
 
-// Gerenciamento de Usuários
 async function atualizarUsuarios() {
   const usuarios = await carregarDados('usuarios');
   const usuariosTable = document.getElementById('usuariosTable');
@@ -349,7 +344,7 @@ document.getElementById('usuarioForm').addEventListener('submit', async (e) => {
   }
 });
 
-// Gerenciamento de Administradores
+
 async function atualizarAdmins() {
   const admins = await carregarDados('admins');
   const adminsTable = document.getElementById('adminsTable');
@@ -430,7 +425,7 @@ document.getElementById('adminForm').addEventListener('submit', async (e) => {
   }
 });
 
-// Chat com Clientes
+
 const ws = new WebSocket('ws://localhost:3000');
 let clienteSelecionado = null;
 
@@ -526,7 +521,6 @@ ws.onclose = () => {
   mensagensAdmin.scrollTop = mensagensAdmin.scrollHeight;
 };
 
-// Estatísticas
 async function atualizarEstatisticas() {
   const usuarios = await carregarDados('usuarios');
   const livros = await carregarDados('livros');
@@ -581,13 +575,13 @@ async function atualizarEstatisticas() {
   });
 }
 
-// Inicializar tabelas e estatísticas
+
 atualizarLivros();
 atualizarUsuarios();
 atualizarAdmins();
 atualizarEstatisticas();
 
-// Inicializar o estado anterior no localStorage na primeira execução
+
 async function inicializarEstadoAnterior() {
   const livros = await carregarDados('livros');
   const usuarios = await carregarDados('usuarios');

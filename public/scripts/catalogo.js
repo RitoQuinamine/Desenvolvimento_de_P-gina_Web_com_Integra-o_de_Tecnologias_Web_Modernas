@@ -65,8 +65,8 @@ async function carregarLivros() {
             }
             const result = await response.json();
             console.log('Resultado do aluguel:', result);
-            alert(result.message); // Exibe a mensagem de sucesso
-            await carregarLivros(); // Recarrega a lista de livros após o aluguel
+            alert(result.message); 
+            await carregarLivros(); 
           } catch (error) {
             console.error('Erro ao alugar livro:', error);
             alert(`Erro ao alugar: ${error.message}. Verifique se o servidor está rodando e tente novamente.`);
@@ -82,5 +82,4 @@ async function carregarLivros() {
   }
 }
 
-// Expor a função para ser chamada no HTML
 window.carregarLivros = carregarLivros;
